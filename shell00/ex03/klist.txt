@@ -1,0 +1,11 @@
+Credentials cache: API:0B3298D4-353B-4ADB-925A-4AD9CFA2916E
+        Principal: mpatrini@42ROMA.IT
+
+  Issued                Expires               Principal
+Nov 22 15:15:50 2021  Nov 23 01:15:50 2021  krbtgt/42ROMA.IT@42ROMA.IT
+Nov 22 15:15:53 2021  Nov 23 01:15:50 2021  HTTP/storage.42roma.it@42ROMA.IT
+Credentials cache: API:FEC2DFD7-E414-4380-A659-C0B4270F9DAC
+        Principal: mpatrini@42ROMA.IT
+
+  Issued                Expires               Principal
+Nov 23 12:35:18 2021  Nov 23 22:35:18 2021  krbtgt/42ROMA.IT@42ROMA.IT
