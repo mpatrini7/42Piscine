@@ -17,7 +17,7 @@ void	ft_static_four(int *game, int **pos, int size)
 	int	f;
 
 	i = 0;
-	while (*pos[i])
+	while (pos[i])
 	{
 		v = 1;
 		f = i;
@@ -25,7 +25,7 @@ void	ft_static_four(int *game, int **pos, int size)
 		{
 			while (v != (size / 4))
 			{
-				*game[f + (size / 4)] = v;
+				game[f + (size / 4)] = v;
 				v++;
 				f++;
 			}
@@ -41,7 +41,7 @@ void	ft_static_four2(int *game, int **pos, int size)
 	int	f;
 
 	i = 0;
-	while (*pos[i])
+	while (pos[i])
 	{
 		v = 1;
 		f = 0;
@@ -49,7 +49,7 @@ void	ft_static_four2(int *game, int **pos, int size)
 		{
 			while (v != (size / 4))
 			{
-				*game[(size / 2 + i) - f] = v;
+				game[(size / 2 + i) - f] = v;
 				v++;
 				f += (size / 4);
 			}
@@ -65,7 +65,7 @@ void	ft_static_four3(int *game, int **pos, int size)
 	int	f;
 
 	i = 0;
-	while (*pos[i])
+	while (pos[i])
 	{
 		v = 1;
 		f = 0;
@@ -73,7 +73,7 @@ void	ft_static_four3(int *game, int **pos, int size)
 		{
 			while (v != (size / 4))
 			{
-				*game[(i % 4) * (size / 4) + f] = v;
+				game[(i % 4) * (size / 4) + f] = v;
 				v++;
 				f += 1;
 			}
@@ -89,7 +89,7 @@ void	ft_static_four4(int *game, int **pos, int size)
 	int	f;
 
 	i = 0;
-	while (*pos[i])
+	while (pos[i])
 	{
 		v = 1;
 		f = 3;
@@ -97,7 +97,7 @@ void	ft_static_four4(int *game, int **pos, int size)
 		{
 			while (v != (size / 4))
 			{
-				*game[(i % 4) * (size / 4) + f] = v;
+				game[(i % 4) * (size / 4) + f] = v;
 				v++;
 				f--;
 			}
