@@ -13,6 +13,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+ft_static(int &game, int &*pos, int size);
+
 int	ft_dimension(char *av)
 {
 	int	m;
@@ -57,29 +59,27 @@ int	*ft_rtrv(char *av, int size)
 void	ft_print_game(int *game, int size)
 {
 	int	i;
-	int print;
+	int	print;
 
 	i = 0;
 	print = size / 4;
-	while(game[i])
+	while (game[i])
 	{
-		if(i % print == 0)
+		if (i % print == 0)
 			write(1, "\n", 1);
 		write(1, &game[i], 1);
-
+		write(1, 32, 1);
 	}
-		write(1, "\n", 1);
+	write(1, "\n", 1);
 }
 
-void	ft_game(int size)
+void	ft_game(int *pos, int size)
 {
-	int *game;
+	int	*game;
 
 	game = (int *) malloc(sizeof(int) * size);
-	ft_static(&game, size);
-	ft_complete(&game, size);
-
-
+	ft_static(&game, &*pos, size);
+	ft_complete(&game, &*pos, size);
 	ft_print_game(&game, size);
 }
 
@@ -89,7 +89,7 @@ int	main(int ac, char **av)
 	int	size;
 
 	if (ac == 2)
-	{	
+	{
 		size = ft_dimension(av[1]);
 		if (size % 4 != 0)
 		{
@@ -102,7 +102,7 @@ int	main(int ac, char **av)
 			write (1, "Error\n", 6);
 			return (0);
 		}
-		ft_game(size);
+		ft_game (&*game, size);
 	}
 	else
 		write (1, "Error\n", 6);
