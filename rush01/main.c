@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 void	ft_static(int *game, int *pos, int size);
-void	ft_complete(int *game, int *pos, int size);
+void	ft_complete(int *game, int *pos, int size, int zer);
 
 int	ft_dimension(char *av)
 {
@@ -86,16 +86,21 @@ void	ft_game(int *pos, int size)
 {
 	int	*game;
 	int	i;
+	int	zer;
 
 	i = 0;
+	zer = 0;
 	game = malloc(size * sizeof(int));
-	while (i < size)
-	{
+	while (i++ < size)
 		game[i] = 0;
-		i++;
-	}
 	ft_static(game, pos, size);
-	ft_complete(game, pos, size);
+	i = 0;
+	while (i++ < size)
+	{
+		if (game[i] == 0)
+			zer++;
+	}
+	ft_complete(game, pos, size, zer);
 	ft_print_game(game, size);
 }
 
