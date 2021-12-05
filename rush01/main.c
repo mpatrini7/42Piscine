@@ -15,6 +15,7 @@
 
 void	ft_static(int *game, int *pos, int size);
 void	ft_complete(int *game, int *pos, int size);
+
 int	ft_dimension(char *av)
 {
 	int	m;
@@ -36,7 +37,6 @@ int	*ft_rtrv(char **av, int size)
 	int	i;
 	int	in;
 	int	*pos;
-	int sti;
 
 	i = 0;
 	in = 0;
@@ -63,17 +63,20 @@ void	ft_print_game(int *game, int size)
 {
 	int	i;
 	int	print;
-	int p;
+	int	p;
+	int	f;
 
 	i = 0;
 	print = size / 4;
+	f = (size / 4) - 1;
 	while (i < size)
 	{
 		p = game[i] + '0';
 		if (i % print == 0 && i > 0)
 			write(1, "\n", 1);
 		write(1, &p, 1);
-		write(1, " ", 1);
+		if ((i % 4) != f)
+			write(1, " ", 1);
 		i++;
 	}
 	write(1, "\n", 1);
@@ -92,7 +95,7 @@ void	ft_game(int *pos, int size)
 		i++;
 	}
 	ft_static(game, pos, size);
-	ft_complete(game, pos, size);
+	//ft_complete(game, pos, size);
 	ft_print_game(game, size);
 }
 
@@ -106,18 +109,18 @@ int	main(int ac, char **av)
 		size = ft_dimension(av[1]);
 		if (size % 4 != 0)
 		{
-			write (1, "Error\n", 6);
+			write (1, "Error! (The string must be dividable by 4)\n", 43);
 			return (0);
 		}
 		pos = ft_rtrv(av, size);
 		if (pos == NULL)
 		{
-			write (1, "Error\n", 6);
+			write (1, "Error! (Numbers not in square range)\n", 37);
 			return (0);
 		}
 		ft_game (pos, size);
 	}
 	else
-		write (1, "Error\n", 6);
+		write (1, "Error! (Please insert a valid string)\n", 38);
 	return (0);
 }
