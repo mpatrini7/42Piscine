@@ -95,7 +95,7 @@ void	ft_game(int *pos, int size)
 		i++;
 	}
 	ft_static(game, pos, size);
-	//ft_complete(game, pos, size);
+	ft_complete(game, pos, size);
 	ft_print_game(game, size);
 }
 

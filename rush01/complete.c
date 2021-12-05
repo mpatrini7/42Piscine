@@ -10,4 +10,87 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_sudoku_x(int *game, int *pos, int size, int num)
+{
+	int	i;
+	int	count;
+	int	in;
 
+	i = 0;
+	while (i < size)
+	{
+		if (i % 4 == 0)
+		{
+			in = 0;
+			count = 0;
+			while (in < (size / 4) && count == 0)
+			{
+				if (game[i + in] == num)
+					count = 1;
+				in++;
+			}
+			if (count == 0)
+				return (i);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	ft_sudoku_y(int *game, int *pos, int size, int num)
+{
+	int	i;
+	int	count;
+	int	in;
+
+	i = 0;
+	while (i < (size / 4))
+	{
+		in = 0;
+		count = 0;
+		while (in < size && count == 0)
+		{
+			if (game[i + in] == num)
+				count = 1;
+			in += (size / 4);
+		}
+		if (count == 0)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_sudoku(int *game, int *pos, int size)
+{
+	int	i;
+	int	num;
+	int	count;
+	int	x;
+	int	y;
+
+	num = 1;
+	while (num <= (size / 4))
+	{
+		i = 0;
+		count = 0;
+		while (i < size)
+		{
+			if (game[i] == num)
+				count += 1;
+			i++;
+		}
+		if (count == ((size / 4) - 1))
+		{
+			y = ft_sudoku_y(game, pos, size, num);
+			x = ft_sudoku_x(game, pos, size, num);
+			game[x + y] = num;
+		}
+		num++;
+	}
+}
+
+void	ft_complete(int *game, int *pos, int size)
+{
+	ft_sudoku(game, pos, size);
+}
