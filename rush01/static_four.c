@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_static_four(int *game, int **pos, int size)
+void	ft_static_four(int *game, int *pos, int size)
 {
 	int	i;
 	int	v;
 	int	f;
 
 	i = 0;
-	while (pos[i])
+	while (i < size)
 	{
 		v = 1;
-		f = i;
-		if (i < (size / 4))
+		f = 0;
+		if (i < (size / 4) && (pos[i] == (size / 4)))
 		{
-			while (v != (size / 4))
+			while (v <= (size / 4))
 			{
-				game[f + (size / 4)] = v;
+				game[i + (f * (size / 4))] = v;
 				v++;
 				f++;
 			}
@@ -34,20 +34,19 @@ void	ft_static_four(int *game, int **pos, int size)
 	}
 }
 
-void	ft_static_four2(int *game, int **pos, int size)
+void	ft_static_four2(int *game, int *pos, int size)
 {
 	int	i;
 	int	v;
-	int	f;
-
+	int	f;   
 	i = 0;
-	while (pos[i])
+	while (i < size)
 	{
 		v = 1;
 		f = 0;
-		if (i >= (size / 4) && i < (size / 2))
+		if (i >= (size / 4) && i < (size / 2) && (pos[i] == (size / 4)))
 		{
-			while (v != (size / 4))
+			while (v <= (size / 4))
 			{
 				game[(size / 2 + i) - f] = v;
 				v++;
@@ -58,44 +57,44 @@ void	ft_static_four2(int *game, int **pos, int size)
 	}
 }
 
-void	ft_static_four3(int *game, int **pos, int size)
+void	ft_static_four3(int *game, int *pos, int size)
 {
 	int	i;
 	int	v;
 	int	f;
 
 	i = 0;
-	while (pos[i])
+	while (i < size)
 	{
 		v = 1;
 		f = 0;
-		if (i >= (size / 2) && i < (size - (size / 4)))
+		if (i >= (size / 2) && i < (size - (size / 4)) && (pos[i] == (size / 4)))
 		{
-			while (v != (size / 4))
+			while (v <= (size / 4))
 			{
 				game[(i % 4) * (size / 4) + f] = v;
 				v++;
-				f += 1;
+				f++;
 			}
 		}
 		i++;
 	}
 }
 
-void	ft_static_four4(int *game, int **pos, int size)
+void	ft_static_four4(int *game, int *pos, int size)
 {
 	int	i;
 	int	v;
 	int	f;
 
 	i = 0;
-	while (pos[i])
+	while (i < size)
 	{
 		v = 1;
 		f = 3;
-		if (i > (size - (size / 4)))
+		if (i >= (size - (size / 4)) && (pos[i] == (size / 4)))
 		{
-			while (v != (size / 4))
+			while (v <= (size / 4))
 			{
 				game[(i % 4) * (size / 4) + f] = v;
 				v++;

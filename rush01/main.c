@@ -40,7 +40,7 @@ int	*ft_rtrv(char **av, int size)
 
 	i = 0;
 	in = 0;
-	pos = (int *) malloc(sizeof(int) * size);
+	pos = malloc(size * sizeof(int));
 	while (av[1][i])
 	{	
 		if (av[1][i] >= 49 && av[1][i] <= ((size / 4) + 48))
@@ -63,14 +63,16 @@ void	ft_print_game(int *game, int size)
 {
 	int	i;
 	int	print;
+	int p;
 
 	i = 0;
 	print = size / 4;
-	while (game[i])
+	while (i < size)
 	{
-		if (i % print == 0)
+		p = game[i] + '0';
+		if (i % print == 0 && i > 0)
 			write(1, "\n", 1);
-		write(1, game + i, 1);
+		write(1, &p, 1);
 		write(1, " ", 1);
 		i++;
 	}
@@ -80,8 +82,15 @@ void	ft_print_game(int *game, int size)
 void	ft_game(int *pos, int size)
 {
 	int	*game;
+	int	i;
 
-	game = (int *) malloc(sizeof(int) * size);
+	i = 0;
+	game = malloc(size * sizeof(int));
+	while (i < size)
+	{
+		game[i] = 0;
+		i++;
+	}
 	ft_static(game, pos, size);
 	//ft_complete(game, pos, size);
 	ft_print_game(game, size);
@@ -106,7 +115,7 @@ int	main(int ac, char **av)
 			write (1, "Error\n", 6);
 			return (0);
 		}
-		ft_game (&*pos, size);
+		ft_game (pos, size);
 	}
 	else
 		write (1, "Error\n", 6);

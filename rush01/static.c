@@ -20,7 +20,7 @@ void    ft_static_one(int *game, int *pos, int size)
     int i;
 
     i = 0;
-    while(pos[i])
+    while(i < size)
 	{
         if(pos[i] == 1)
         {
