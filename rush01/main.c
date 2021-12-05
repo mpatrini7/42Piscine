@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 void	ft_static(int *game, int *pos, int size);
-
+void	ft_complete(int *game, int *pos, int size);
 int	ft_dimension(char *av)
 {
 	int	m;
@@ -92,7 +92,7 @@ void	ft_game(int *pos, int size)
 		i++;
 	}
 	ft_static(game, pos, size);
-	//ft_complete(game, pos, size);
+	ft_complete(game, pos, size);
 	ft_print_game(game, size);
 }
 
