@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku.c                                         :+:      :+:    :+:   */
+/*   sudoku.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 19:38:17 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/05 19:38:19 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/05 20:42:30 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/05 20:42:34 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,15 @@ void	ft_sudoku(int *game, int *pos, int size)
 	int	y;
 
 	num = 1;
-	while (num++ <= (size / 4))
+	while (num <= (size / 4))
 	{
 		i = 0;
 		count = 0;
-		while (i++ < size)
+		while (i < size)
 		{
 			if (game[i] == num)
 				count += 1;
+			i++;
 		}
 		if (count == ((size / 4) - 1))
 		{
@@ -85,6 +86,7 @@ void	ft_sudoku(int *game, int *pos, int size)
 			x = ft_sudoku_x(game, pos, size, num);
 			game[x + y] = num;
 		}
+		num++;
 	}
 }
 

@@ -1,17 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complete.c                                         :+:      :+:    :+:   */
+/*   complete2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 16:45:17 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/05 16:45:19 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/05 20:42:06 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/05 20:42:11 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_sudoku_line(int *game, int *pos, int size);
-int	ft_sudoku(int *game, int *pos, int size);
 
 void	ft_sudoku_row2(int *game, int *pos, int size, int k)
 {
@@ -79,21 +76,4 @@ int	ft_calc_zer(int *game, int size)
 		i++;
 	}
 	return (zer);
-}
-
-void	ft_complete(int *game, int *pos, int size)
-{	
-	int	zer;
-	
-	zer = ft_calc_zer(game, size);
-	if (zer != 0)
-	{
-		ft_sudoku(game, pos, size);
-		ft_sudoku_line(game, pos, size);
-		ft_sudoku_row(game, pos, size);
-		//ft_complete(game, pos, size);
-		return ;
-	}
-	else if (zer == 0)
-		return ;
 }

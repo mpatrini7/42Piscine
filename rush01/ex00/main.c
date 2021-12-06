@@ -14,22 +14,29 @@
 #include <stdlib.h>
 
 void	ft_static(int *game, int *pos, int size);
-void	ft_complete(int *game, int *pos, int size, int zer);
+void	ft_complete(int *game, int *pos, int size);
 
 int	ft_dimension(char *av)
 {
 	int	m;
 	int	i;
+	int	sp;
 
 	i = 0;
 	m = 0;
+	sp = 0;
 	while (av[i])
 	{
 		if (av[i] >= 49 && av[i] <= 57)
 			m++;
+		else if (av[i] == 32 || (av[i] >= 9 && av[i] <= 13))
+			sp++;
 		i++;
 	}
-	return (m);
+	if (sp == (m - 1))
+		return (m);
+	else
+		return (0);
 }
 
 int	*ft_rtrv(char **av, int size)
@@ -100,7 +107,7 @@ void	ft_game(int *pos, int size)
 		if (game[i] == 0)
 			zer++;
 	}
-	ft_complete(game, pos, size, zer);
+	ft_complete(game, pos, size);
 	ft_print_game(game, size);
 }
 
@@ -114,18 +121,18 @@ int	main(int ac, char **av)
 		size = ft_dimension(av[1]);
 		if (size % 4 != 0)
 		{
-			write (1, "Error! (The string must be dividable by 4)\n", 43);
+			write (1, "Error!\n", 7);
 			return (0);
 		}
 		pos = ft_rtrv(av, size);
 		if (pos == NULL)
 		{
-			write (1, "Error! (Numbers not in square range)\n", 37);
+			write (1, "Error!\n", 7);
 			return (0);
 		}
 		ft_game (pos, size);
 	}
 	else
-		write (1, "Error! (Please insert a valid string)\n", 38);
+		write (1, "Error!\n", 7);
 	return (0);
 }

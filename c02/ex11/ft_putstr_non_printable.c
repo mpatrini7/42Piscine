@@ -20,7 +20,6 @@ void	ft_putchar(char c)
 void	ft_putstr_non_printable(char *str)
 {
 	int		i;
-	char	c;
 
 	i = 0;
 	while (str[i] != '\0')

@@ -6,26 +6,25 @@
 /*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:57:02 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/02 13:57:04 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:21:20 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	i;
-	int	o;
+	unsigned int	i;
+	unsigned int	o;
 
 	i = 0;
 	o = 0;
-	while (dest[i] != '\0')
+	while (dest[i])
 		i++;
-	while (src[o] != '\0' && i < nb)
+	while (src[o] != '\0' && nb > o)
 	{
 		dest[i] = src[o];
 		i++;
 		o++;
 	}
-	if (nb <= i)
-		dest[i] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }

@@ -10,22 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_strlowcase(char *str)
+void	ft_strlowcase(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != 0)
+	while (str[i])
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z')
-		{
 			str[i] += 32;
-			i++;
-		}
-		else
-		{
-			i++;
-		}
+		i++;
 	}
 }
 
@@ -46,7 +40,7 @@ void	ft_strcapitalize2(char *str)
 				str[i] -= 32;
 			i++;
 		}
-		else if (b < 48 || b > 122 || b > 57 && b < 65 || b > 91 && b < 97)
+		else if (b < 48 || b > 122 || (b > 57 && b < 65) || (b > 90 && b < 97))
 		{
 			if (str[i] >= 'a' && str[i] <= 'z')
 				str[i] -= 32;
