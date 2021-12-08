@@ -20,11 +20,11 @@ int	main(int ac, char **av)
 {
 	int	i;
 
-	i = 0;
+	i = ac - 1;
 	while (av[0][i])
 	{
 		ft_putchar(av[0][i]);
 		i++;
 	}
-	write(1, '\n', 1);
+	ft_putchar('\n');
 }
