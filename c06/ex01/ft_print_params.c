@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 23:46:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/06 14:20:33 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/08 20:12:14 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/08 20:12:17 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+void	ft_putchar(char c)
 {
-	unsigned int	i;
+	write(1, &c, 1);
+}
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((i + 1 < n) && (s1[i] == s2[i]) && s1[i] && s2[i])
-		i++;
-	return (s1[i] - s2[i]);
+int	main(int ac, char **av)
+{
+	int	i;
+	int	b;
+
+	b = 1;
+	while(av[b])
+	{
+		i = 0;
+		while (av[b][i])
+		{
+			ft_putchar(av[b][i]);
+			i++;
+		}
+		ft_putchar('\n');
+		b++;
+	}
 }

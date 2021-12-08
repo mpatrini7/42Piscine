@@ -26,4 +26,5 @@ int	main(int ac, char **av)
 		ft_putchar(av[0][i]);
 		i++;
 	}
+	write(1, '\n', 1);
 }
