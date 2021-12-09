@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 18:26:55 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/09 20:16:09 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/09 20:23:19 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/09 20:23:25 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,78 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
+int	ft_is_charset(char c, char *charset)
+{
+	while(1)
+	{
+		if(*charset = '\0')
+			return(0);
+		if(*charset = c)
+			return(1);
+		charset++;
+	}
+	return (0);
+}
+
+void	ft_add_string(char **final, char *start, char *charset, int size)
+{
+	if(ft_is_charset(start[0], charset) == 1)
+	{
+		start++;
+		size--;
+	}
+	*final = (char *)malloc((size + 1) * sizeof(char));
+	ft_strncpy(*final, start, size);
+}
+
 int	ft_count(char *str, char *charset)
 {
-	int	i;
-	int	count;
+	int		count;
+	char	*start;
+	char	*finish;
 
-	i = 0
 	count = 0;
-	while(str[i])
+	start = str;
+	finish = str;
+	while(1)
 	{
-		if(str[i] == '\0')
-			return (count + 1)
-		else if (str[i] == charset && str[i-1] != charset)
+		if(ft_is_charset(*str, charset) == 1)
+			finish = str;
+		if (finish - start > 1)
 			count++;
-		i++;
+		if(*str == '\0')
+			break ;
+		start = finish;
+		str++;
 	}
+	return (count);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-
+	char 	**final;
+	int 	i;
+	char	*start;
+	char	*finish;
+	int		size;
+	
+	final = (char **)malloc((ft_count(str, charset) + 1) * sizeof(char *));
+	i = 0;
+	start = str;
+	finish = str;
+	while(1)
+	{
+		if(ft_is_charset(*str, charset) == 1)
+			finish = str;
+		size = finish - start;
+		if (size > 1)
+			ft_add_string(&final[i], start, charset, size);
+			i++;
+		if(*str == '\0')
+			break ;
+		start = finish;
+		str++;
+	}
+	final[i] = 0;
+	return (final);
 }
