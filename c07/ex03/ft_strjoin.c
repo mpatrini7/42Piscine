@@ -56,7 +56,8 @@ char	*ft_strjoin2(char *r, char **strs, char *sep)
 		a = ft_add_sep(sep, r, a);
 		i++;
 	}
-	r[a] == '\0';
+	r[a] = '\0';
+	return (r);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -64,6 +65,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	char	*r;
 	int		b;
+	int		in;
 
 	r = NULL;
 	if (size == 0)

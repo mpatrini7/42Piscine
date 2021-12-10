@@ -32,12 +32,12 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 
 int	ft_is_charset(char c, char *charset)
 {
-	while(1)
+	while (1)
 	{
-		if(*charset = '\0')
-			return(0);
-		if(*charset = c)
-			return(1);
+		if (*charset == '\0')
+			return (0);
+		if (*charset == c)
+			return (1);
 		charset++;
 	}
 	return (0);
@@ -45,7 +45,7 @@ int	ft_is_charset(char c, char *charset)
 
 void	ft_add_string(char **final, char *start, char *charset, int size)
 {
-	if(ft_is_charset(start[0], charset) == 1)
+	if (ft_is_charset(start[0], charset) == 1)
 	{
 		start++;
 		size--;
@@ -63,13 +63,13 @@ int	ft_count(char *str, char *charset)
 	count = 0;
 	start = str;
 	finish = str;
-	while(1)
+	while (1)
 	{
-		if(ft_is_charset(*str, charset) == 1)
+		if (ft_is_charset(*str, charset) == 1)
 			finish = str;
 		if (finish - start > 1)
 			count++;
-		if(*str == '\0')
+		if (*str == '\0')
 			break ;
 		start = finish;
 		str++;
@@ -79,26 +79,25 @@ int	ft_count(char *str, char *charset)
 
 char	**ft_split(char *str, char *charset)
 {
-	char 	**final;
-	int 	i;
+	char	**final;
+	int		i;
 	char	*start;
 	char	*finish;
 	int		size;
-	
+
 	final = (char **)malloc((ft_count(str, charset) + 1) * sizeof(char *));
 	i = 0;
 	start = str;
 	finish = str;
-	while(1)
+	while (1)
 	{
-		if(ft_is_charset(*str, charset) == 1)
+		if (ft_is_charset(*str, charset) == 1)
 			finish = str;
 		size = finish - start;
-		prtinf()
 		if (size > 1)
 			ft_add_string(&final[i], start, charset, size);
 			i++;
-		if(*str == '\0')
+		if (*str == '\0')
 			break ;
 		start = finish;
 		str++;
@@ -111,7 +110,6 @@ int	main(/*int argc, char *argv[]*/)
 {
 	char	**matrix;
 	int		i;
-​
 	i = 0;
 	//matrix = ft_split(argv[1], argv[2]);
 	matrix = ft_split("michael e molto bravo", " ");

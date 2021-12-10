@@ -23,7 +23,7 @@ void	ft_rev_int_tab(char *tab, int size, int sign)
 	int		s;
 	char	temp;
 
-	if(sign == -1)
+	if (sign == -1)
 		i = 1;
 	else
 		i = 0;
@@ -38,52 +38,68 @@ void	ft_rev_int_tab(char *tab, int size, int sign)
 	}
 }
 
-void	ft_putnbr_base_rec(int nbr, char *base, int mult, int i, char *final)
-{	
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+void	ft_putnbr_base_rec(int nbr, char *base, int i, char *final)
+{
+	int	mult;
+
+	mult = ft_strlen(base);
 	i += 1;
 	if (nbr == -2147483648)
 	{
-		ft_putnbr_base_rec(nbr / mult, base, mult, i, final);
+		ft_putnbr_base_rec(nbr / mult, base, i, final);
 		final[i] = (base[-(nbr % mult)]);
 		return ;
 	}
 	if (nbr < 0)
 	{
 		final[i] = '-';
-		ft_putnbr_base_rec(-nbr, base, mult, i, final);
+		ft_putnbr_base_rec(-nbr, base, i, final);
 		return ;
 	}
 	if (nbr > mult -1)
-		ft_putnbr_base_rec(nbr / mult, base, mult, i, final);
+		ft_putnbr_base_rec(nbr / mult, base, i, final);
 	final[i] = (base[(nbr % mult)]);
 }
 
-char *ft_convert_base(char *nbr, char *base_from, char *base_to)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	char *final;
-	int i;
-	int	size;
-	int ma;
-	ma = 40;
-	final = (char*)malloc(ma * sizeof(char));
+	char	*final;
+	char	*push;
+	int		i;
+	int		size;
+	int		ma;
 
+	ma = 3000;
+	final = (char *)malloc(ma * sizeof(char));
 	if (ft_valid_base(base_to) == 0)
-		return(0);
+		return (0);
 	i = -1;
-	ft_putnbr_base_rec(ft_atoi_base(nbr, base_from), base_to, ft_strlen(base_to), i, final);
+	ft_putnbr_base_rec(ft_atoi_base(nbr, base_from), base_to, i, final);
 	size = ft_strlen(final);
-	if(final[0] == 45)
+	if (final[0] == 45)
 		ft_rev_int_tab(final, size, -1);
 	else
 		ft_rev_int_tab(final, size, 1);
-
-	return(final);
-}
-
-int		main(void)
-{
-	printf("result : $%s$\n", ft_convert_base("2147483647", "0123456789", "0123456789abcdef"));
-	printf("result : $%s$\n", ft_convert_base("---------7fffffff", "0123456789abcdef", "01"));
-	printf("result : $%s$\n", ft_convert_base("---+--0001023a", "0123456789", "0123456789"));
-	printf("result : $%s$\n", ft_convert_base("-0", "0123456789", "abcdefghij"));
+	push = (char *)malloc(size * sizeof(char));
+	push = ft_strncpy(push, final, (unsigned int)size);
+	free (final);
+	return (push);
 }
