@@ -94,6 +94,7 @@ char	**ft_split(char *str, char *charset)
 		if(ft_is_charset(*str, charset) == 1)
 			finish = str;
 		size = finish - start;
+		prtinf()
 		if (size > 1)
 			ft_add_string(&final[i], start, charset, size);
 			i++;
@@ -104,4 +105,20 @@ char	**ft_split(char *str, char *charset)
 	}
 	final[i] = 0;
 	return (final);
+}
+
+int	main(/*int argc, char *argv[]*/)
+{
+	char	**matrix;
+	int		i;
+​
+	i = 0;
+	//matrix = ft_split(argv[1], argv[2]);
+	matrix = ft_split("michael e molto bravo", " ");
+	while (matrix[i] != 0)
+	{
+		printf("%s\n", matrix[i]);
+		i++;
+	}
+	//printf("%s\n", argv[1]);
 }
