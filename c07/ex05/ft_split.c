@@ -43,7 +43,7 @@ int	ft_is_charset(char c, char *charset)
 	return (0);
 }
 
-void	ft_add_string(char **final, char *start, char *charset, int size)
+int	ft_add_string(char **final, char *start, char *charset, int size)
 {
 	if (ft_is_charset(start[0], charset) == 1)
 	{
@@ -52,6 +52,7 @@ void	ft_add_string(char **final, char *start, char *charset, int size)
 	}
 	*final = (char *)malloc((size + 1) * sizeof(char));
 	ft_strncpy(*final, start, size);
+	return (1);
 }
 
 int	ft_count(char *str, char *charset)
@@ -95,8 +96,7 @@ char	**ft_split(char *str, char *charset)
 			finish = str;
 		size = finish - start;
 		if (size > 1)
-			ft_add_string(&final[i], start, charset, size);
-			i++;
+			i += ft_add_string(&final[i], start, charset, size);
 		if (*str == '\0')
 			break ;
 		start = finish;
@@ -112,7 +112,8 @@ int	main(/*int argc, char *argv[]*/)
 	int		i;
 	i = 0;
 	//matrix = ft_split(argv[1], argv[2]);
-	matrix = ft_split("michael e molto bravo", " ");
+	matrix = ft_split("ImtmVrV6Ov8QrkGGUglBy7Vgsu iIsdl5XyT35Czv4xeu", "yenORYQ");
+
 	while (matrix[i] != 0)
 	{
 		printf("%s\n", matrix[i]);
