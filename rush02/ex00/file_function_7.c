@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush02.h                                           :+:      :+:    :+:   */
+/*   file_function_7.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 22:30:35 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/12 22:30:38 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/12 22:29:30 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/12 22:29:33 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUSH02_H
-# define RUSH02_H
+#include "rush02.h"
+#include "functions.h"
 
-# define    SIZE_1B    1
+void	libera_tab(char **tab, int num_righe)
+{
+	int	i;
 
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
+	i = 0;
+	while (i < num_righe)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
-enum e_bool {
-	false,
-	true,
-};
+void	libera_diz(t_nodo *succ)
+{
+	if (succ != 0)
+	{
+		libera_diz(succ->next);
+		free(succ);
+	}
+}
 
-enum e_io {
-	in,
-	out,
-	err,
-};
-
-typedef struct s_list{
-	int				valore;
-	int				decine;
-	char			*nome;
-	struct s_list	*next;
-}	t_nodo;
-
-#endif
+int	my_atoi2_2(int n)
+{
+	if (n > 99)
+		n = 1;
+	return (n);
+}
