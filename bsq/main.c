@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 21:12:54 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/14 22:31:25 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/14 23:32:42 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	main(int argc, char *argv[])
 		while (i < argc)
 		{
 			see_map(argv[i]);
-			if (i < argc - 1)
-				write(1, "\n", 1);
 			i++;
 		}
 	}
@@ -64,12 +62,13 @@ void	see_map(char *file)
 	vins = make_matrix(cord[0], cord[1]);
 	if (vins == 0)
 		return ;
-	//rev_line(tab[0], lenstr(tab[0]));
 	cord[0] = cord[0];
 	cord[1] = cord[1];
 	convert_arr(tab, vins, *tab, cord);
 	the_square_game(vins, cord, square);
 	print_square(tab, square, tab[0], cord);
+	libera_tab2(tab, cord[0] + 1);
+	libera_tab(vins, cord[0] + 1);
 	return ;
 }
 

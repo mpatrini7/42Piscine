@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 21:07:23 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/14 22:30:26 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/14 23:28:32 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ void	main2(void);
 int		approve_legend(char *line);
 int		approve_char(char **table, char *legend, int row, int col);
 void	fill_tab2(int *mix, char buffer, int first_row, char **tab);
+void	libera_tab(int **tab, int num_righe);
+void	libera_tab2(char **tab, int num_righe);
 
 #endif

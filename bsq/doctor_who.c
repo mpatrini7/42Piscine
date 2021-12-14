@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 21:13:05 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/14 22:31:02 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/14 23:33:08 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,19 @@ int	fill_tab(char *file, char **tab, int col, int first_row)
 		mix[0]++;
 		mix[3] = read(mix[2], &buffer, 1);
 	}
+	close(mix[2]);
 	return (1);
+}
+
+void	libera_tab2(char **tab, int num_righe)
+{
+	int	i;
+
+	i = 0;
+	while (i < num_righe)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 21:13:21 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/14 22:08:57 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/14 23:33:45 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ int	approve_char(char **table, char *legend, int row, int col)
 {
 	int	i;
 	int	j;
+	int	flag;
 
+	flag = 0;
 	i = 1;
 	while (i < row)
 	{
@@ -73,9 +75,27 @@ int	approve_char(char **table, char *legend, int row, int col)
 		{
 			if (table[i][j] != legend[1] && table[i][j] != legend[2])
 				return (0);
+			if (table[i][j] == legend[2])
+				flag = 1;
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	if (flag == 1)
+		return (1);
+	else
+		return (0);
+}
+
+void	libera_tab(int **tab, int num_righe)
+{
+	int	i;
+
+	i = 0;
+	while (i < num_righe)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

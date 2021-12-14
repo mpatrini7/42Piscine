@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:12:15 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/10 16:12:18 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:48:16 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int	ft_valid_base(char *str);
 int	ft_atoi_base(char *str, char *base);
@@ -87,19 +88,32 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		size;
 	int		ma;
 
-	ma = 3000;
-	final = (char *)malloc(ma * sizeof(char));
+	final = (char *)malloc(sizeof(final) + 1);
+	if(!final)
+		return (0);
 	if (ft_valid_base(base_to) == 0)
 		return (0);
 	i = -1;
 	ft_putnbr_base_rec(ft_atoi_base(nbr, base_from), base_to, i, final);
-	size = ft_strlen(final);
 	if (final[0] == 45)
 		ft_rev_int_tab(final, size, -1);
 	else
 		ft_rev_int_tab(final, size, 1);
-	push = (char *)malloc(size * sizeof(char));
-	push = ft_strncpy(push, final, (unsigned int)size);
-	free (final);
-	return (push);
+	final[i] == '\0';
+	return (final);
+}
+
+int		main(void)
+{
+	char *a;
+
+
+	a = ft_convert_base("12545646", "0123456789", "0123456789");
+	printf("result : $%s$\n", a);
+	a = ft_convert_base("---------7fffffff", "0123456789abcdef", "01");
+	printf("result : $%s$\n", a);
+	a = ft_convert_base("---+--0001023a", "0123456789", "0123456789");
+	printf("result : $%s$\n", a);
+	a = ft_convert_base("-0", "0123456789", "abcdefghij");
+	printf("result : $%s$\n", a);
 }
