@@ -71,7 +71,8 @@ int	main(int ac, char **av)
 	int		i;
 	int		b;
 
-	ft_swap(av, ac);
+	if(ac > 2)
+		ft_swap(av, ac);
 	b = 1;
 	while (b < ac)
 	{

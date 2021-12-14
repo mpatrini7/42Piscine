@@ -105,19 +105,3 @@ char	**ft_split(char *str, char *charset)
 	final[i] = 0;
 	return (final);
 }
-
-int	main(/*int argc, char *argv[]*/)
-{
-	char	**matrix;
-	int		i;
-	i = 0;
-	//matrix = ft_split(argv[1], argv[2]);
-	matrix = ft_split("ImtmVrV6Ov8QrkGGUglBy7Vgsu iIsdl5XyT35Czv4xeu", "yenORYQ");
-
-	while (matrix[i] != 0)
-	{
-		printf("%s\n", matrix[i]);
-		i++;
-	}
-	//printf("%s\n", argv[1]);
-}
