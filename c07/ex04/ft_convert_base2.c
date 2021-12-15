@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:33:29 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/15 15:49:51 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/15 21:49:08 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@ int	ft_strlen(char *str)
 
 int	ft_valid_base(char *str)
 {
-	char	*current;
+	char	*c;
 	int		i;
 	int		o;
 
-	current = str;
+	c = str;
 	i = 0;
 	if (str == 0 || ft_strlen(str) <= 1)
 		return (0);
-	while (*current)
+	while (*c)
 	{
-		if (ft_is_space(*current) || *current == '+' || *current == '-')
+		if (ft_is_space(*c) || *c == '+' || *c == '-')
 			return (0);
-		current++;
+		c++;
 	}
-	while (i < current - str)
+	while (i < c - str)
 	{
 		o = i + 1;
-		while (o < current - str)
+		while (o < c - str)
 			if (str[i] == str[o++])
 				return (0);
 		i++;

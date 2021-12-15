@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 23:36:06 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/15 11:58:37 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/15 22:02:30 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_recursive_factorial_rec(int a, int n)
 	a *= n;
 	n--;
 	if (n > 0)
-		return (ft_recursive_factorial_recursive(a, n));
+		return (ft_recursive_factorial_rec(a, n));
 	return (a);
 }
 

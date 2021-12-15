@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:12:15 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/15 17:48:32 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/15 21:50:34 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	ma = 300;
 	final = (char *)malloc(ma * sizeof(char));
 	if (!final)
-		return (0);
+		return (NULL);
 	if (ft_valid_base(base_to) == 0)
-		return (0);
+		return (NULL);
+	if (ft_valid_base(base_from) == 0)
+		return (NULL);
 	i = -1;
 	ft_putnbr_base_rec(ft_atoi_base(nbr, base_from), base_to, i, final);
 	size = ft_strlen(final);
