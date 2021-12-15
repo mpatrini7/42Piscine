@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 20:42:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/15 11:58:18 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/13 23:36:27 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/15 11:53:40 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_fibonacci(int index)
 {
-	unsigned int	i;
-	unsigned int	n;
-	unsigned int	c;
-
-	c = nb;
-	if (nb < 0)
-		return (0);
-	else if (nb <= 1)
-		return (1);
-	i = 0;
-	n = 0;
-	while (n < c)
-	{
-		n = i * i;
-		i++;
-	}
-	i -= 1;
-	if (i * i == nb)
-		return (i);
-	return (0);
+	if (index < 0)
+		return (-1);
+	if (index < 2)
+		return (index);
+	return (ft_fibonacci(index - 2) + ft_fibonacci(index - 1));
 }

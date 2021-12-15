@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 20:42:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/15 11:58:18 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/13 23:36:16 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/15 11:25:08 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_iterative_factorial(int nb)
 {
-	unsigned int	i;
-	unsigned int	n;
-	unsigned int	c;
+	int	a;
+	int	i;
 
-	c = nb;
 	if (nb < 0)
 		return (0);
-	else if (nb <= 1)
-		return (1);
-	i = 0;
-	n = 0;
-	while (n < c)
+	i = 1;
+	a = 1;
+	while (i < nb + 1)
 	{
-		n = i * i;
+		a = a * i;
 		i++;
 	}
-	i -= 1;
-	if (i * i == nb)
-		return (i);
-	return (0);
+	return (a);
 }

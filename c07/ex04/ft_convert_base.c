@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:12:15 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/14 15:48:16 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/15 17:48:32 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ void	ft_putnbr_base_rec(int nbr, char *base, int i, char *final)
 	i += 1;
 	if (nbr == -2147483648)
 	{
-		ft_putnbr_base_rec(nbr / mult, base, i, final);
-		final[i] = (base[-(nbr % mult)]);
+		final[i] = '-';
+		final[i + 1] = (base[-(nbr % mult)]);
+		i += 1;
+		ft_putnbr_base_rec(-(nbr / mult), base, i, final);
 		return ;
 	}
 	if (nbr < 0)
@@ -83,37 +85,22 @@ void	ft_putnbr_base_rec(int nbr, char *base, int i, char *final)
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	char	*final;
-	char	*push;
 	int		i;
 	int		size;
 	int		ma;
 
-	final = (char *)malloc(sizeof(final) + 1);
-	if(!final)
+	ma = 300;
+	final = (char *)malloc(ma * sizeof(char));
+	if (!final)
 		return (0);
 	if (ft_valid_base(base_to) == 0)
 		return (0);
 	i = -1;
 	ft_putnbr_base_rec(ft_atoi_base(nbr, base_from), base_to, i, final);
+	size = ft_strlen(final);
 	if (final[0] == 45)
 		ft_rev_int_tab(final, size, -1);
 	else
 		ft_rev_int_tab(final, size, 1);
-	final[i] == '\0';
 	return (final);
-}
-
-int		main(void)
-{
-	char *a;
-
-
-	a = ft_convert_base("12545646", "0123456789", "0123456789");
-	printf("result : $%s$\n", a);
-	a = ft_convert_base("---------7fffffff", "0123456789abcdef", "01");
-	printf("result : $%s$\n", a);
-	a = ft_convert_base("---+--0001023a", "0123456789", "0123456789");
-	printf("result : $%s$\n", a);
-	a = ft_convert_base("-0", "0123456789", "abcdefghij");
-	printf("result : $%s$\n", a);
 }

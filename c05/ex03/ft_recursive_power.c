@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 20:32:55 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/09 20:39:17 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/15 11:52:43 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_recursive_power(int nb, int power)
 	int	res;
 
 	res = 1;
-	if (nb < 0)
+	if (power < 0)
 		return (0);
 	if (nb == 0)
 		return (1);

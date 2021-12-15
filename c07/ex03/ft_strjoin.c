@@ -6,7 +6,7 @@
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:33:14 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/14 12:50:30 by mpatrini         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:08:50 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ char	*ft_strjoin2(char *r, char **strs, char *sep, int size)
 			in++;
 			a++;
 		}
-		a = ft_add_sep(sep, r, a);
+		if (i < size - 1)
+			a = ft_add_sep(sep, r, a);
 		i++;
 	}
 	r[a] = '\0';
@@ -69,7 +70,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	if (size == 0)
 		return ((char *)malloc(sizeof(char)));
-	b = ft_len(sep) * (size);
+	b = ft_len(sep) * (size - 1);
 	i = 0;
 	while (i < size)
 	{
@@ -83,27 +84,4 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	if (r == NULL)
 		return (0);
 	return (ft_strjoin2(r, strs, sep, size));
-}
-
-int		main(void)
-{
-	int		index;
-	char	**strs;
-	char	*separator;
-	char	*result;
-
-	strs = (char**)malloc(4 * sizeof(strs));
-	strs[0] = "lol";
-	strs[1] = "1234";
-	strs[2] = "poiuic";
-	strs[3] = "1234";
-	separator = " ";
-	index = 0;
-	while (index < 4)
-	{
-		result = ft_strjoin(index, strs, separator);
-		printf("result with size = %d : $%s$\n", index, result);
-		free(result);
-		index++;
-	}
 }
