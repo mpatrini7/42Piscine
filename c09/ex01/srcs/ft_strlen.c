@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 20:42:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/16 11:56:17 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/11/29 12:25:56 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/11/29 12:25:58 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_strlen(char *str)
 {
 	int	i;
 
-	i = 1;
-	while (i < (nb / i))
+	i = 0;
+	while (str[i] != '\0')
+	{
 		i++;
-	if ((i * i) == nb)
-		return (i);
-	return (0);
+	}
+	return (i);
 }

@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 20:42:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/16 11:56:17 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/11/24 18:43:14 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/11/24 18:51:59 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-int	ft_sqrt(int nb)
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = 1;
-	while (i < (nb / i))
-		i++;
-	if ((i * i) == nb)
-		return (i);
-	return (0);
+	write(1, &c, 1);
 }

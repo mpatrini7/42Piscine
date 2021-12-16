@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpatrini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 20:42:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/16 11:56:17 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/11/29 12:13:51 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/11/29 12:13:52 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+void	ft_swap(int *a, int *b)
 {
-	int	i;
+	int	swap;
 
-	i = 1;
-	while (i < (nb / i))
-		i++;
-	if ((i * i) == nb)
-		return (i);
-	return (0);
+	swap = *a;
+	*a = *b;
+	*b = swap;
 }

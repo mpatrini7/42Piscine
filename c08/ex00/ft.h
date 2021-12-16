@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrini <mpatrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 20:42:10 by mpatrini          #+#    #+#             */
-/*   Updated: 2021/12/16 11:56:17 by mpatrini         ###   ########.fr       */
+/*   Created: 2021/12/15 22:40:41 by mpatrini          #+#    #+#             */
+/*   Updated: 2021/12/15 22:44:04 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
-{
-	int	i;
+#ifndef FT_H
+# define FT_H
 
-	i = 1;
-	while (i < (nb / i))
-		i++;
-	if ((i * i) == nb)
-		return (i);
-	return (0);
-}
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
+
+#endif
