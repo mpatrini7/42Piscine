@@ -9,82 +9,73 @@
 /*   Updated: 2021/11/29 16:01:16 by mpatrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
+#include <stdbool.h>
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_putnbr3(int ***arr, int nb)
+int	ft_is_print(int *tab, int n)
 {
-	while (arr[9] <= (1 - nb))
+	int	i;
+
+	i = 1;
+	while (i < n)
 	{
-		write(1, arr, (nb - 1));
-		write(1, ", ", 2);
-		arr[9]++;
+		if (tab[i - 1] >= tab[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+void	ft_print_combn2(int *tab, int n)
+{
+	int	i;
+
+	i = 0;
+	if (ft_is_print(tab, n) == 0)
+		return ;
+	while (i < n)
+	{
+		ft_putchar(tab[i] + '0');
+		i++;
+	}
+	if (tab[0] < (10 - n))
+	{
+		ft_putchar(',');
+		ft_putchar(' ');
 	}
 }
 
-void	ft_putnbr2(int **arr, int nb)
+void	ft_print_combn(int n)
 {
-	while (arr[6] <= (4 - nb))
+	int	i;
+	int	tab[n];
+
+	i = 0;
+	while (i < n)
 	{
-		arr[7] = arr[6] + 1;
-		while (arr[7] <= (3 - nb))
-		{
-			arr[8] = arr[7] + 1;
-			while (arr[8] <= (2 - nb))
-			{
-				arr[9] = arr[8] + 1;
-				ft_putnbr3(&arr, nb);
-				arr[8]++;
-			}
-			arr[7]++;
-		}
-		arr[6]++;
+		tab[i] = 0;
+		i++;
 	}
-}
-
-void	ft_putnbr1(int *arr, int nb)
-{
-	while (arr[3] <= (7 - nb))
+	while (tab[0] <= (10 - n) && n >= 1 && n < 10)
 	{
-		arr[4] = arr[3] + 1;
-		while (arr[4] <= (6 - nb))
+		ft_print_combn2(tab, n);
+		tab[n - 1]++;
+		i = n - 1;
+		while(i > 0 && n > 1)
 		{
-			arr[5] = arr[4] + 1;
-			while (arr[5] <= (5 - nb))
+			if (tab[i] > 9)
 			{
-				arr[6] = arr[5] + 1;
-				ft_putnbr2(&arr, nb);
-				arr[5]++;
+				tab[i] = 0;
+				tab[i - 1]++;
 			}
-			arr[4]++;
+			i--;
 		}
-		arr[3]++;
-	}
-}
-
-void	ft_print_combn(int nb)
-{
-	int	arr[9];
-
-	arr[0] = 0;
-	while (arr[0] <= (10 - nb))
-	{
-		arr[1] = arr[0] + 1;
-		while (arr[1] <= (9 - nb))
-		{
-			arr[2] = arr[1] + 1;
-			while (arr[2] <= (8 - nb))
-			{
-				arr[3] = arr[2] + 1;
-				ft_putnbr1(&arr, nb);
-				arr[2]++;
-			}
-			arr[1]++;
-		}
-		arr[0]++;
 	}
 }
